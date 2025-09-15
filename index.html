@@ -7,17 +7,28 @@
   <style>
     body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
     header img { width: 100%; height: auto; display: block; }
+    nav { position: sticky; top: 0; background: #111; color: #fff; padding: 1rem; z-index: 1000; }
+    nav ul { display: flex; justify-content: center; list-style: none; margin: 0; padding: 0; gap: 2rem; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
     section { padding: 3rem 2rem; max-width: 1000px; margin: auto; text-align: center; }
     section:nth-child(even) { background: #f9f9f9; }
     h2 { margin-bottom: 1.5rem; font-size: 2rem; }
-    p { max-width: 800px; margin: 0 auto 1.5rem; font-size: 1.1rem; }
-    .videos, .photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; justify-items: center; }
+    p { font-size: 1.1rem; }
+    .bio-content { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; justify-content: center; }
+    .bio-text { flex: 1 1 400px; text-align: left; }
+    .bio-photos { flex: 1 1 300px; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+    .bio-photos img { width: 100%; max-width: 300px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; justify-items: center; }
     iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .photos img { width: 250px; height: 250px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: auto; }
     input, textarea { padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
     button { padding: 0.75rem; background: #111; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
     button:hover { background: #444; }
+    .faq { max-width: 800px; margin: auto; text-align: left; }
+    .faq-item { border-bottom: 1px solid #ddd; padding: 1rem 0; }
+    .faq-question { cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+    .faq-answer { display: none; margin-top: 0.5rem; font-size: 1rem; }
     footer { background: #111; color: #fff; text-align: center; padding: 1rem; margin-top: 2rem; }
   </style>
 </head>
@@ -26,18 +37,36 @@
     <img src="banner.png" alt="Soul Sugar banner">
   </header>
 
+  <nav>
+    <ul>
+      <li><a href="#bio">Bio</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#spotify">Spotify</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <section id="bio">
     <h2>Soul Sugar – Sweet Sounds for Every Occasion</h2>
-    <p>
-      From dancefloor disco to party anthems, Soul Sugar bring the perfect soundtrack to your event. Known for our high-energy performances, we specialize in classic hits and modern favorites that keep the party going all night long. Whether it’s a wedding, party, or corporate event, we know how to get your guests singing, dancing, and celebrating in style.
-    </p>
-    <p>
-      But we don’t just do big party vibes—our versatile duo set-up is ideal for more intimate moments, creating a relaxed and soulful atmosphere for drinks receptions, dinners, and laid-back occasions.
-    </p>
-    <p>
-      With Soul Sugar, you get professional musicianship, a warm stage presence, and a setlist crafted to suit your event perfectly.
-    </p>
-    <p><strong>✨ Ready to make your event unforgettable?</strong> Get in touch today and let’s talk about how we can bring the perfect vibe to your next celebration.</p>
+    <div class="bio-content">
+      <div class="bio-text">
+        <p>
+          From dancefloor disco to party anthems, Soul Sugar bring the perfect soundtrack to your event. Known for our high-energy performances, we specialize in classic hits and modern favorites that keep the party going all night long. Whether it’s a wedding, party, or corporate event, we know how to get your guests singing, dancing, and celebrating in style.
+        </p>
+        <p>
+          But we don’t just do big party vibes—our versatile duo set-up is ideal for more intimate moments, creating a relaxed and soulful atmosphere for drinks receptions, dinners, and laid-back occasions.
+        </p>
+        <p>
+          With Soul Sugar, you get professional musicianship, a warm stage presence, and a setlist crafted to suit your event perfectly.
+        </p>
+        <p><strong>✨ Ready to make your event unforgettable?</strong> Get in touch today and let’s talk about how we can bring the perfect vibe to your next celebration.</p>
+      </div>
+      <div class="bio-photos">
+        <img src="alex.jpg" alt="Alex performing">
+        <img src="hollie.jpg" alt="Hollie performing">
+      </div>
+    </div>
   </section>
 
   <section id="videos">
@@ -49,17 +78,35 @@
     </div>
   </section>
 
-  <section id="photos">
-    <h2>Gallery</h2>
-    <div class="photos">
-      <img src="alex.jpg" alt="Alex performing">
-      <img src="hollie.jpg" alt="Hollie performing">
-    </div>
+  <section id="spotify">
+    <h2>Listen to our Set List on Spotify</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/playlist/2gscCQmTpuWrvQJn9pY6Sq?si=a8lhHxcuQFGWczwvqzfedg&pi=DPf09IiRSp2dE" width="100%" height="380" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </section>
 
-  <section id="spotify">
-    <h2>Listen to Our Repertoire on Spotify</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/playlist/2gscCQmTpuWrvQJn9pY6Sq?si=a8lhHxcuQFGWczwvqzfedg&pi=DPf09IiRSp2dE" width="100%" height="380" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-question">HOW DO I BOOK SOUL SUGAR? <span>+</span></div>
+        <div class="faq-answer">Booking is simple. We will guide you through the process step by step. To confirm a date in our diary, we ask for a 20% deposit and send you a contract to sign stating the terms of the booking. The remaining balance will be due one week before your event.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">HOW FAR DO YOU TRAVEL? <span>+</span></div>
+        <div class="faq-answer">We’re based in Liverpool, although travel regularly to weddings and events throughout the UK, and even overseas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">CAN I MAKE REQUESTS? <span>+</span></div>
+        <div class="faq-answer">Absolutely. Soul Sugar are happy and open to discuss your requests. Please get in touch for more information.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">WHEN DO I NEED TO BOOK? <span>+</span></div>
+        <div class="faq-answer">Soul Sugar are a busy band (for obvious reasons!), and so we advise that you book as far in advance as possible.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">HOW LONG DO SOUL SUGAR NEED TO SET UP? <span>+</span></div>
+        <div class="faq-answer">Soul Sugar usually allow around an hour for set-up and soundcheck, depending on details.</div>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
@@ -75,5 +122,20 @@
   <footer>
     <p>&copy; 2025 Soul Sugar</p>
   </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        const isVisible = answer.style.display === 'block';
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
+        if (!isVisible) {
+          answer.style.display = 'block';
+          q.querySelector('span').textContent = '−';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
