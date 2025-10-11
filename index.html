@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -243,6 +244,36 @@
       padding: 1rem;
       margin-top: 2rem;
     }
+
+    .nav-audio-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+.nav-audio-player button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-audio-player button:hover {
+  color: #F47B20;
+}
+
+#trackTitle {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
   </style>
   
 </head>
@@ -261,6 +292,17 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
+    <div class="nav-audio-player">
+      <button id="prevBtn" aria-label="Previous Track"><i class="fas fa-backward"></i></button>
+      <button id="playPauseBtn" aria-label="Play/Pause"><i class="fas fa-pause"></i></button>
+      <button id="nextBtn" aria-label="Next Track"><i class="fas fa-forward"></i></button>
+      <span id="trackTitle">Loading...</span>
+    
+      <audio id="audioPlayer" preload="auto">
+        <source src="song1.mp3" type="audio/mp3">
+      </audio>
+    </div>
   </nav>
 
   <section id="bio">
@@ -340,7 +382,7 @@
       </div>
       
     </div>
-  </section>
+  </section>  
 
   <section id="pricing">
     <h2>Download Our Pricing Guide</h2>
@@ -539,6 +581,102 @@
       updateCarousel();
     }, 4000);
   </script>
+
+<script>
+  const playlist = [
+    {
+      title: "Now Playing (2 Sugars) - Country Roads",
+      src: "country roads.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Yellow",
+      src: "yellow.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - The Best",
+      src: "the best.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Stand By Me",
+      src: "sbm.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Valerie",
+      src: "val.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Back To Black",
+      src: "back to black.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - I'm Yours",
+      src: "i'm yours.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Better Together",
+      src: "better together.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Everywhere",
+      src: "everywhere.wav"
+    },
+    {
+      title: "Now Playing (2 Sugars) - Fly Me To The Moon",
+      src: "fly me to the moon.wav"
+    }
+  ];
+
+  const audioPlayer = document.getElementById('audioPlayer');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const trackTitle = document.getElementById('trackTitle');
+
+  let currentTrack = 0;
+
+  function loadTrack(index) {
+    const track = playlist[index];
+    audioPlayer.src = track.src;
+    trackTitle.textContent = track.title;
+    audioPlayer.load();
+    audioPlayer.play();
+    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+
+  }
+
+  playPauseBtn.addEventListener('click', () => {
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  } else {
+    audioPlayer.pause();
+    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+  }
+});
+
+
+  prevBtn.addEventListener('click', () => {
+    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+    loadTrack(currentTrack);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    loadTrack(currentTrack);
+  });
+
+  // Auto-play next track when current ends
+  audioPlayer.addEventListener('ended', () => {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    loadTrack(currentTrack);
+  });
+
+  // Auto-start when page loads
+  window.addEventListener('load', () => {
+    loadTrack(currentTrack);
+  });
+</script>
+
   
   
 </body>
