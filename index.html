@@ -1,280 +1,12 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soul Sugar</title>
-  <style>
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      color: #333;
-      background: #fff; /* clean background */
-    }
-  
-    header img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  
-    nav {
-      position: sticky;
-      top: 0;
-      background: #222; /* simple dark nav */
-      color: #fff;
-      padding: 1rem;
-      z-index: 1000;
-    }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2rem;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #F47B20; /* orange accent */
-    }
-  
-    section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-      margin-bottom: 2rem;
-      border-radius: 12px;
-    }
-  
-    /* alternate soft backgrounds for sections */
-    section:nth-of-type(odd) {
-      background: #fafafa; /* light grey */
-    }
-    section:nth-of-type(even) {
-      background: #f5f0f7; /* soft lavender tint */
-    }
-  
-    h2 {
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      color: #333;
-    }
-    p {
-      font-size: 1.1rem;
-    }
-  
-    /* Carousel */
-    .carousel {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-    .carousel-track {
-      display: flex;
-      gap: 15px;
-      animation: scroll 30s linear infinite;
-    }
-    .carousel img {
-      width: calc((100% / 3) - 10px);
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-  
-    /* Bio */
-    .bio-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .bio-text {
-      flex: 1 1 400px;
-      text-align: left;
-    }
-    .bio-photos {
-      flex: 1 1 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-    .bio-photos img {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-  
-    /* Videos */
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      justify-items: center;
-    }
-    iframe {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-  
-    /* Forms & Buttons */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
-      margin: auto;
-      text-align: left;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    .required::after {
-      content: " *";
-      color: #F47B20;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      color: #333;
-      font-family: inherit;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: 2px solid #F47B20;
-      border-color: transparent;
-    }
-    button, .download-btn {
-      padding: 0.75rem 1.5rem;
-      background: #F47B20; /* orange */
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.3s ease;
-    }
-    button:hover, .download-btn:hover {
-      background: #333; /* simple dark hover */
-    }
-    
-    /* Form instructions */
-    .form-instructions {
-      background: rgba(244, 123, 32, 0.1);
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1.5rem;
-      text-align: left;
-    }
-    .form-instructions h3 {
-      margin-top: 0;
-      color: #F47B20;
-    }
-    .form-instructions ol {
-      padding-left: 1.5rem;
-      margin-bottom: 0;
-    }
-    .form-instructions li {
-      margin-bottom: 0.5rem;
-    }
-    .form-instructions a {
-      color: #F47B20;
-      font-weight: bold;
-    }
 
-    /* FAQ */
-    .faq {
-      max-width: 800px;
-      margin: auto;
-      text-align: left;
-    }
-    .faq-item {
-      border-bottom: 1px solid #ddd;
-      padding: 1rem 0;
-    }
-    .faq-question {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: bold;
-    }
-    .faq-answer {
-      display: none;
-      margin-top: 0.5rem;
-      font-size: 1rem;
-    }
-
-    /* Footer */
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    .nav-audio-player {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding-top: 1rem;
-  flex-wrap: wrap;
-  font-size: 1rem;
-}
-
-.nav-audio-player button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.nav-audio-player button:hover {
-  color: #F47B20;
-}
-
-#trackTitle {
-  color: #fff;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-  </style>
   
 </head>
 <body>
@@ -326,9 +58,10 @@
   <section id="videos">
     <h2>Watch Us</h2>
     <div class="videos">
-      <iframe src="https://www.youtube.com/embed/bE40wIw9VoM" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/q37H-4xJwMI" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/0TpOpjheRi4" allowfullscreen></iframe> -->
+      <iframe src="https://www.youtube.com/embed/0TpOpjheRi4" ></iframe>
+      <iframe src="https://www.youtube.com/embed/fwwktKZoKKc" ></iframe>
+      <iframe src="https://www.youtube.com/embed/bE40wIw9VoM" ></iframe>
+      <iframe src="https://www.youtube.com/embed/q37H-4xJwMI" ></iframe>
     </div>
   </section>
 
@@ -336,21 +69,29 @@
     <h2>Gallery</h2>
     <div class="carousel">
       <div class="carousel-track">
-        <img src="bass.jpeg" alt="Soul Sugar live 1">
-      <img src="drums.jpeg" alt="Soul Sugar live 2">
-      <img src="guitar.jpeg" alt="Soul Sugar live 3">
-      <img src="guitar 2.jpeg" alt="Soul Sugar live 4">
-      <img src="drum3.jpeg" alt="Soul Sugar live 5">
-      <img src="drums2.jpeg" alt="Soul Sugar live 6">
-      <img src="bass2.jpeg" alt="Soul Sugar live 7">
-
-      <img src="bass.jpeg" alt="Soul Sugar live 1">
-      <img src="drums.jpeg" alt="Soul Sugar live 2">
-      <img src="guitar.jpeg" alt="Soul Sugar live 3">
-      <img src="guitar 2.jpeg" alt="Soul Sugar live 4">
-      <img src="drum3.jpeg" alt="Soul Sugar live 5">
-      <img src="drums2.jpeg" alt="Soul Sugar live 6">
-      <img src="bass2.jpeg" alt="Soul Sugar live 7">
+        <!-- First set -->
+        <img src="tipi.jpg">
+        <img src="bass.jpeg">
+        <img src="walk.jpg">
+        <img src="drums.jpeg">
+        <img src="guitar.jpeg">
+        <img src="guitar 2.jpeg">
+        <img src="2sugars.jpg">
+        <img src="drum3.jpeg">
+        <img src="drums2.jpeg">
+        <img src="bass2.jpeg">
+    
+        <!-- Duplicate set (needed for seamless loop) -->
+        <img src="tipi.jpg">
+        <img src="bass.jpeg">
+        <img src="walk.jpg">
+        <img src="drums.jpeg">
+        <img src="guitar.jpeg">
+        <img src="guitar 2.jpeg">
+        <img src="2sugars.jpg">
+        <img src="drum3.jpeg">
+        <img src="drums2.jpeg">
+        <img src="bass2.jpeg">
       </div>
     </div>
   </section>
@@ -360,7 +101,7 @@
     <h2>Two Sugars Please!</h2>
     <div class="bio-content">
       <div class="bio-photos">
-        <img src="hollie.jpg" alt="Alex performing">
+        <img src="alandhol.jpg" alt="Alex performing">
       </div>
       <div class="bio-text">
         <p>
@@ -485,198 +226,11 @@
   <footer>
     <p>&copy; 2025 Soul Sugar</p>
   </footer>
-
-  <script>
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        const answer = q.nextElementSibling;
-        const isVisible = answer.style.display === 'block';
-        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-        document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
-        if (!isVisible) {
-          answer.style.display = 'block';
-          q.querySelector('span').textContent = '−';
-        }
-      });
-    });
-    
-    // Set minimum date to today for the event date field
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('eventDate').setAttribute('min', today);
-    
-    // Form submission handling
-    document.getElementById('bookingForm').addEventListener('submit', async function(event) {
-      event.preventDefault(); // Prevent default form submission
-      
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const eventDate = document.getElementById('eventDate').value;
-      
-      if (!name || !email || !eventDate) {
-        alert('Please fill in all required fields.');
-        return false;
-      }
-      
-      // Get the form data
-      const formData = new FormData(this);
-      
-      try {
-        // Submit the form data using fetch
-        const response = await fetch(this.action, {
-          method: this.method,
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          // Show success message
-          document.getElementById('successMessage').style.display = 'block';
-          
-          // Clear the form
-          this.reset();
-          
-          // Scroll to success message
-          document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-          
-          // Hide success message after 5 seconds
-          setTimeout(() => {
-            document.getElementById('successMessage').style.display = 'none';
-          }, 5000);
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('There was a problem submitting your form. Please try again.');
-      }
-    });
-  </script>
-  <script>
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const prevButton = document.querySelector('.carousel-btn.prev');
-    const nextButton = document.querySelector('.carousel-btn.next');
-    const visibleSlides = 3;
-    let index = 0;
   
-    function updateCarousel() {
-      track.style.transform = `translateX(-${index * (100 / visibleSlides)}%)`;
-    }
-  
-    nextButton.addEventListener('click', () => {
-      index = (index + 1) % slides.length;
-      updateCarousel();
-    });
-  
-    prevButton.addEventListener('click', () => {
-      index = (index - 1 + slides.length) % slides.length;
-      updateCarousel();
-    });
-  
-    // Auto-play every 4 seconds
-    setInterval(() => {
-      index = (index + 1) % slides.length;
-      updateCarousel();
-    }, 4000);
-  </script>
-
-<script>
-  const playlist = [
-    {
-      title: "Now Playing (2 Sugars) - Country Roads",
-      src: "country roads.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Yellow",
-      src: "yellow.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - The Best",
-      src: "the best.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Stand By Me",
-      src: "sbm.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Valerie",
-      src: "val.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Back To Black",
-      src: "back to black.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - I'm Yours",
-      src: "i'm yours.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Better Together",
-      src: "better together.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Everywhere",
-      src: "everywhere.wav"
-    },
-    {
-      title: "Now Playing (2 Sugars) - Fly Me To The Moon",
-      src: "fly me to the moon.wav"
-    }
-  ];
-
-  const audioPlayer = document.getElementById('audioPlayer');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const trackTitle = document.getElementById('trackTitle');
-
-  let currentTrack = 0;
-
-  function loadTrack(index) {
-    const track = playlist[index];
-    audioPlayer.src = track.src;
-    trackTitle.textContent = track.title;
-    audioPlayer.load();
-    audioPlayer.play();
-    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-
-  }
-
-  playPauseBtn.addEventListener('click', () => {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-  } else {
-    audioPlayer.pause();
-    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-  }
-});
-
-
-  prevBtn.addEventListener('click', () => {
-    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-    loadTrack(currentTrack);
-  });
-
-  nextBtn.addEventListener('click', () => {
-    currentTrack = (currentTrack + 1) % playlist.length;
-    loadTrack(currentTrack);
-  });
-
-  // Auto-play next track when current ends
-  audioPlayer.addEventListener('ended', () => {
-    currentTrack = (currentTrack + 1) % playlist.length;
-    loadTrack(currentTrack);
-  });
-
-  // Auto-start when page loads
-  window.addEventListener('load', () => {
-    loadTrack(currentTrack);
-  });
-</script>
-
+  <script src="faq.js"></script>
+  <script src="form.js"></script>
+  <script src="audio-player.js"></script>
+  <script src="carousel.js"></script>
   
   
 </body>
